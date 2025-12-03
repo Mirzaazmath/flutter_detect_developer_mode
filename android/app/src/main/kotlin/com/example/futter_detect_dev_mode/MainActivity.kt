@@ -19,7 +19,7 @@ class MainActivity : FlutterActivity() {
                     "isDevMode" -> {
                         val devEnabled = Settings.Secure.getInt(
                             contentResolver,
-                            Settings.Global.DEVELOPMENT_SETTINGS_ENABLED,   // ✔ correct constant
+                            Settings.Global.DEVELOPMENT_SETTINGS_ENABLED,
                             0
                         ) == 1
 
@@ -39,5 +39,16 @@ class MainActivity : FlutterActivity() {
                     else -> result.notImplemented()
                 }
             }
+    }
+    private fun isAdbEnabledBySystemProp(): Boolean {
+        return try {
+            val value = Class.forName("android.os.SystemProperties")
+                .getMethod("get", String::class.java)
+                .invoke(null, "ro.debuggable") as String
+
+            value == "1"
+        } catch (e: Exception) {
+            false
+        }
     }
 }

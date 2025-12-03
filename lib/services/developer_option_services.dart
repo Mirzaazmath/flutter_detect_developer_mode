@@ -23,7 +23,7 @@ class DeveloperOptionService {
   static Future<bool> isUsbDebuggingEnabled() async {
     try {
       // here we are invoking the method by passing the string as a identifier
-      final result = platform.invokeMethod("isUsbDebugging");
+      final result = await platform.invokeMethod("isUsbDebugging");
       return result == true;
     } catch (e) {
       debugPrint(
