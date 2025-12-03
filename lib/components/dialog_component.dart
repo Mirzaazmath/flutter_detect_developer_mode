@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../services/developer_option_services.dart';
+
 class CustomDialogBox extends StatefulWidget {
   final bool usbDebugging;
   const CustomDialogBox({super.key, required this.usbDebugging});
@@ -51,8 +53,8 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                   spacing: 10,
                   children: [
                     Expanded(child: GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).pop();
+                      onTap: () async{
+                        await DeveloperOptionService.openDevSetting(widget.usbDebugging);
                       },
                       child: Container(
                         height: 45,

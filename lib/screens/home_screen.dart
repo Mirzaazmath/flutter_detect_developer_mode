@@ -22,9 +22,6 @@ class _HomeScreenState extends State<HomeScreen> {
   void initCheck() async {
     devOptions = await DeveloperOptionService.isDeveloperOptionEnabled();
     usbDebugging = await DeveloperOptionService.isUsbDebuggingEnabled();
-    setState(() {});
-    print(devOptions);
-    print(usbDebugging);
 
     if (devOptions) {
       showDialog(
