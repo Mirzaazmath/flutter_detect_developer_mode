@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:futter_detect_dev_mode/services/developer_option_services.dart';
 
+import '../components/dialog_component.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -23,6 +25,18 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {});
     print(devOptions);
     print(usbDebugging);
+
+    if (devOptions) {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return CustomDialogBox(
+           usbDebugging: usbDebugging,
+          );
+        },
+      );
+    }
   }
 
   @override
