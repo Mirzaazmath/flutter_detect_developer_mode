@@ -54,7 +54,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                   children: [
                     Expanded(child: GestureDetector(
                       onTap: () async{
-                        await DeveloperOptionService.openDevSetting(widget.usbDebugging);
+                        await DeveloperOptionService.openDevSetting();
                       },
                       child: Container(
                         height: 45,

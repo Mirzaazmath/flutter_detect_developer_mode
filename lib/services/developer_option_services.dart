@@ -34,10 +34,10 @@ class DeveloperOptionService {
   }
 
   // this method is for open setting to close  the usb debugging mode and developer option
-  static Future<bool> openDevSetting(bool isUsbOnly) async {
+  static Future<bool> openDevSetting() async {
     try {
       // here we are invoking the method by passing the string as a identifier
-      final result = await platform.invokeMethod("openDevSetting",isUsbOnly);
+      final result = await platform.invokeMethod("openDevSetting");
       return result == true;
     } catch (e) {
       debugPrint(
